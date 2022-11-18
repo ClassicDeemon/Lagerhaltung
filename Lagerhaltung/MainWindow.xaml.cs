@@ -59,7 +59,7 @@ namespace Lagerhaltung
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT art_id, art_bez, art_nr, art_einheit, art_min_bestand", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT art_id, art_bez, art_nr, art_einheit, art_min_bestand from artikelstamm", conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataSet data = new DataSet();
                 adapter.Fill(data, "loadDataBinding");

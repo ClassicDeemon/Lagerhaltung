@@ -11,12 +11,12 @@
     <Grid>
         <Menu Margin="0,2,0,-2">
             <MenuItem x:Name="menuBenutzer" FontSize="20">
-                <MenuItem Header="_Abmelden" FontSize="20"/>
+                <MenuItem Header="_Abmelden" FontSize="20" Click="onClickAbmelden"/>
             </MenuItem>
             <MenuItem Header="_Grafik" FontSize="20" x:Name="menuGrafik" Visibility="Hidden">
             </MenuItem>
             <MenuItem x:Name="menuAdmin" Header="_Admin" Visibility="Hidden" FontSize="20">
-                <MenuItem Header="_Benutzer verwalten" FontSize="20"/>
+                <MenuItem Header="_Benutzer verwalten" FontSize="20" Click="onClickVerwaltung"/>
             </MenuItem>
 
         </Menu>
