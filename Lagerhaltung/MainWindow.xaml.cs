@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ namespace Lagerhaltung
     /// <summary>
     /// Interaktionslogik für Artikelstamm.xaml
     /// </summary>
-    public partial class MainWindow: Window
+    public partial class MainWindow : Window
     {
         int permission;
         string user;
@@ -27,6 +29,7 @@ namespace Lagerhaltung
             this.permission = permission;
             InitializeComponent();
             rechteVerwaltung();
+            loadTable();
         }
 
         private void rechteVerwaltung()
@@ -35,7 +38,7 @@ namespace Lagerhaltung
             //Grafiker
             if (permission > 1)
             {
-                tabItemGrafik.Visibility = Visibility.Visible;
+                menuGrafik.Visibility = Visibility.Visible;
             }
             //Mitarbeiter
             if (permission > 2)
@@ -49,6 +52,25 @@ namespace Lagerhaltung
             }
 
         }
+
+        private void loadTable()
+        { 
+            MySqlConnection conn = new MySqlConnection("server=localhost;user=user;database=lagerhaltung;port=3306;password=user");
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT art_id, art_bez, art_nr, art_einheit, art_min_bestand", conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet data = new DataSet();
+                adapter.Fill(data, "loadDataBinding");
+                dataGridArticle.DataContext = data;
+                } catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { conn.Close(); }
+
+         } 
 
     }
 }

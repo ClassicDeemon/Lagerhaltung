@@ -9,31 +9,44 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
     <Grid>
-        <Menu>
-            <MenuItem x:Name="menuBenutzer">
-                <MenuItem Header="_Abmelden"/>
+        <Menu Margin="0,2,0,-2">
+            <MenuItem x:Name="menuBenutzer" FontSize="20">
+                <MenuItem Header="_Abmelden" FontSize="20"/>
             </MenuItem>
-            <MenuItem x:Name="menuAdmin" Header="_Admin" Visibility="Hidden">
-                <MenuItem Header="_Benutzer verwalten"/>
+            <MenuItem Header="_Grafik" FontSize="20" x:Name="menuGrafik" Visibility="Hidden">
             </MenuItem>
+            <MenuItem x:Name="menuAdmin" Header="_Admin" Visibility="Hidden" FontSize="20">
+                <MenuItem Header="_Benutzer verwalten" FontSize="20"/>
+            </MenuItem>
+
         </Menu>
-        <TabControl Margin="0,50,0,0">
-            <TabItem Header="Artikelstamm">
+        <TabControl Margin="0,52,0,-2">
+            <TabItem Header="Artikelstamm" FontSize="20">
+                <Grid Background="#FFE5E5E5">
+                    <Button Width="200" FontSize="30" Content="Hinzufügen" HorizontalAlignment="Left" Margin="56,243,0,0" VerticalAlignment="Top"/>
+                    <Label Width="200" FontSize="40" Content="Artikel..." HorizontalAlignment="Left" Margin="56,78,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                    <Button Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="56,397,0,0" VerticalAlignment="Top"/>
+                    <Button Width="200" FontSize="30" Content="Bewegen" HorizontalAlignment="Left" Margin="56,562,0,0" VerticalAlignment="Top"/>
+                    <Grid Margin="352,10,10,10" Width="1000">
+                        <DataGrid AutoGenerateColumns="False" Width="1000" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=art_id}" Header="ID" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_bez}" Header="Bezeichnung" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_nr}" Header="Menge" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_einheit}" Header="Einheit" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_min_bestand}" Header="Mindestbestand" Width="200" IsReadOnly="true"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Artikelbewegung" FontSize="20">
                 <Grid Background="#FFE5E5E5">
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Artikelbewegung">
-                <Grid Background="#FFE5E5E5">
-
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="tabItemGrafik" Header="Grafik" Visibility="Hidden">
-                <Grid Background="#FFE5E5E5">
-
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="tabItemLagerstamm" Header="Lagerstamm" Visibility="Hidden">
+            <TabItem x:Name="tabItemLagerstamm" Header="Lagerstamm" Visibility="Hidden" FontSize="20">
                 <Grid Background="#FFE5E5E5">
 
                 </Grid>
