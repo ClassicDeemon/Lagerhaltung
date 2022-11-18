@@ -1,0 +1,44 @@
+﻿<Window x:Class="Lagerhaltung.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lagerhaltung"
+        mc:Ignorable="d"
+        Title="Lagerverwaltung" Height="{x:Static SystemParameters.PrimaryScreenHeight}" Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Grid>
+        <Menu>
+            <MenuItem x:Name="menuBenutzer">
+                <MenuItem Header="_Abmelden"/>
+            </MenuItem>
+            <MenuItem x:Name="menuAdmin" Header="_Admin" Visibility="Hidden">
+                <MenuItem Header="_Benutzer verwalten"/>
+            </MenuItem>
+        </Menu>
+        <TabControl Margin="0,50,0,0">
+            <TabItem Header="Artikelstamm">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Artikelbewegung">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItemGrafik" Header="Grafik" Visibility="Hidden">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItemLagerstamm" Header="Lagerstamm" Visibility="Hidden">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
