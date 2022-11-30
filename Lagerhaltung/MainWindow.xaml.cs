@@ -72,5 +72,16 @@ namespace Lagerhaltung
 
          } 
 
+        private void onClickAbmelden(object sender, EventArgs e)
+        {
+
+        }
+
+        private void onClickVerwaltung(object sender, EventArgs e)
+        {
+
+        }
+
     }
+
 }
