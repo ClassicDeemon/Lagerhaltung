@@ -78,8 +78,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Artikelbewegung.xaml.cs">
+      <DependentUpon>Artikelbewegung.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Artikelhinzufuegen.xaml.cs">
       <DependentUpon>Artikelhinzufuegen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lagerplatzhinzufuegen.xaml.cs">
+      <DependentUpon>Lagerplatzhinzufuegen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -87,11 +93,19 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Artikelbewegung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Artikelhinzufuegen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lagerplatzhinzufuegen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
