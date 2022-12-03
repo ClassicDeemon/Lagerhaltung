@@ -23,10 +23,10 @@
         <TabControl Margin="0,52,0,-2">
             <TabItem Header="Artikelstamm" FontSize="20">
                 <Grid Background="#FFE5E5E5">
-                    <Button Width="200" FontSize="30" Content="Hinzufügen" HorizontalAlignment="Left" Margin="56,243,0,0" VerticalAlignment="Top"/>
-                    <Label Width="200" FontSize="40" Content="Artikel..." HorizontalAlignment="Left" Margin="56,78,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-                    <Button Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="56,397,0,0" VerticalAlignment="Top"/>
-                    <Button Width="200" FontSize="30" Content="Bewegen" HorizontalAlignment="Left" Margin="56,562,0,0" VerticalAlignment="Top"/>
+                    <Button Width="200" FontSize="30" Content="Hinzufügen" HorizontalAlignment="Left" Margin="56,156,0,0" VerticalAlignment="Top"/>
+                    <Label Width="200" FontSize="40" Content="Artikel..." HorizontalAlignment="Left" Margin="56,36,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                    <Button Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="56,238,0,0" VerticalAlignment="Top"/>
+                    <Button Width="200" FontSize="30" Content="Bewegen" HorizontalAlignment="Left" Margin="56,319,0,0" VerticalAlignment="Top"/>
                     <Grid Margin="352,10,10,10" Width="1000">
                         <DataGrid AutoGenerateColumns="False" Width="1000" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
                             <DataGrid.Columns>
@@ -35,6 +35,7 @@
                                 <DataGridTextColumn Binding="{Binding Path=art_nr}" Header="Menge" Width="200" IsReadOnly="true"/>
                                 <DataGridTextColumn Binding="{Binding Path=art_einheit}" Header="Einheit" Width="200" IsReadOnly="true"/>
                                 <DataGridTextColumn Binding="{Binding Path=art_min_bestand}" Header="Mindestbestand" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_bild}" Header="Bild" Width="100" IsReadOnly="true" Visibility="Hidden"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
