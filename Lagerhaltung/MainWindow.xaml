@@ -23,9 +23,9 @@
         <TabControl Margin="0,52,0,-2" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Artikelstamm" FontSize="20">
                 <Grid Background="#FFE5E5E5">
-                    <Button Width="200" FontSize="30" Content="Hinzufügen" HorizontalAlignment="Left" Margin="92,158,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonArticleAdd" Width="200" FontSize="30" Content="Hinzufügen" HorizontalAlignment="Left" Margin="92,158,0,0" VerticalAlignment="Top" Click="buttonArticleAdd_Click"/>
                     <Label Width="200" FontSize="40" Content="Artikel..." HorizontalAlignment="Left" Margin="92,38,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-                    <Button Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="92,240,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonArticleDelete" Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="92,240,0,0" VerticalAlignment="Top" Click="buttonArticleDelete_Click"/>
                     <Grid Margin="352,10,10,10" Width="1000">
                         <DataGrid AutoGenerateColumns="False" Width="1000" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
                             <DataGrid.Columns>
@@ -39,7 +39,7 @@
                         </DataGrid>
 
                     </Grid>
-                    <Button Width="200" FontSize="30" Content="Bearbeiten" HorizontalAlignment="Left" Margin="92,325,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonArticleEdit" Width="200" FontSize="30" Content="Bearbeiten" HorizontalAlignment="Left" Margin="92,325,0,0" VerticalAlignment="Top" Click="buttonArticleEdit_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Artikelbewegung" FontSize="20">

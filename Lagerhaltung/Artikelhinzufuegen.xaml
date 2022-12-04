@@ -22,7 +22,7 @@
         <Label Content="Mindestbestand" HorizontalAlignment="Left" Margin="40,153,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textEinheit" HorizontalAlignment="Left" Margin="90,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
         <Label Content="Einheit" HorizontalAlignment="Left" Margin="102,95,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="minBestell" HorizontalAlignment="Left" Margin="27,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="textMinBestell" HorizontalAlignment="Left" Margin="27,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Label Content="Mindestbestellwert" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBox x:Name="textBeschreibung" HorizontalAlignment="Left" Margin="27,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Label Content="Beschreibung" HorizontalAlignment="Left" Margin="47,91,0,0" VerticalAlignment="Top" Grid.Row="1"/>

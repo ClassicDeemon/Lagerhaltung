@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lagerhaltung"
         mc:Ignorable="d"
-        Title="Artikelbewegung" Height="450" Width="800">
+        Title="Artikelbewegung" Height="450" Width="400">
     <Grid>
-        
+        <Grid Margin="190,10,10,10" Width="200">
+            <DataGrid AutoGenerateColumns="False" Width="200" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Bezeichnung" Width="80" IsReadOnly="true"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Bestand" Width="60" IsReadOnly="true"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Mindest" Width="60" IsReadOnly="true"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <ComboBox HorizontalAlignment="Left" Margin="32,33,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Zugang"/>
+            <ComboBoxItem Content="Abgang"/>
+        </ComboBox>
     </Grid>
 </Window>

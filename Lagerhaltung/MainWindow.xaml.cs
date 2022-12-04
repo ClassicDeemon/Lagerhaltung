@@ -82,6 +82,10 @@ namespace Lagerhaltung
 
         }
 
+        private void buttonArticleAdd_Click()
+        {
+
+        }
     }
 
 }
