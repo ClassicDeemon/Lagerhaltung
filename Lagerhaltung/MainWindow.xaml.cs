@@ -82,7 +82,18 @@ namespace Lagerhaltung
 
         }
 
-        private void buttonArticleAdd_Click()
+        private void buttonArticleAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Artikelhinzufuegen artikelhinzufuegen = new Artikelhinzufuegen();
+            artikelhinzufuegen.Show();
+        }
+
+        private void buttonArticleDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonArticleEdit_Click(object sender, RoutedEventArgs e)
         {
 
         }

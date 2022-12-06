@@ -9,12 +9,12 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Anmeldung - Lagerhaltung" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="textUser" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="20" KeyDown="textUserKeyDownEvent" KeyUp="textUserKeyUpEvent"/>
-        <Label x:Name="hintUser" Content="Benutzername" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" Width="220" FontSize="20" FontStyle="Italic" MouseLeftButtonDown="hintUserOnClickEvent"/>
-        <PasswordBox x:Name="textPassword" HorizontalAlignment="Center" Margin="0,131,0,0" VerticalAlignment="Top" Width="220" FontSize="20" KeyDown="textPasswordKeyDownEvent" KeyUp="textUserKeyUpEvent"/>
-        <Label x:Name="hintPassword" Content="Passwort" HorizontalAlignment="Center" Margin="0,127,0,0" VerticalAlignment="Top" Width="220" FontSize="20" FontStyle="Italic" MouseLeftButtonDown="hintPasswordOnClickEvent"/>
+        <TextBox x:Name="textUser" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="20"/>
+        <PasswordBox x:Name="textPassword" HorizontalAlignment="Center" Margin="0,131,0,0" VerticalAlignment="Top" Width="220" FontSize="20"/>
         <Button Content="Anmelden" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" FontSize="20" Width="130" Click="loginOnClick"/>
         <CheckBox x:Name="checkBoxPassword" Content="Passwort anzeigen" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" Click="onClickCheckBox"/>
         <TextBox x:Name="textPasswordHint" Visibility="Hidden" HorizontalAlignment="Center" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="20"/>
+        <Label Content="Benutzername" HorizontalAlignment="Left" Margin="61,59,0,0" VerticalAlignment="Top"/>
+        <Label Content="Passwort" HorizontalAlignment="Left" Margin="61,111,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

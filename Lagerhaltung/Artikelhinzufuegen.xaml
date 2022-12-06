@@ -5,16 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lagerhaltung"
         mc:Ignorable="d"
-        Title="Lagerhaltung - Artikelhinzufügen" Height="400" Width="600"
+        Title="Lagerhaltung - Artikelhinzufügen" Height="680" Width="600"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="63*"/>
-            <RowDefinition Height="65*"/>
-        </Grid.RowDefinitions>
         <Label Content="Artikel hinzufügen" HorizontalAlignment="Left" Margin="34,12,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textMenge" HorizontalAlignment="Left" Margin="14,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-        <Button Content="Hinzufügen" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Click="clickedButtonAdd" Grid.Row="1"/>
+        <Button Content="Akzeptieren" FontSize="20" HorizontalAlignment="Center" Margin="0,608,0,0" VerticalAlignment="Top" Click="clickedButtonAdd"/>
         <Label Content="Menge" HorizontalAlignment="Left" Margin="25,95,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBezeichnung" HorizontalAlignment="Left" Margin="28,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Bezeichnung" HorizontalAlignment="Left" Margin="49,41,0,0" VerticalAlignment="Top"/>
@@ -22,20 +18,29 @@
         <Label Content="Mindestbestand" HorizontalAlignment="Left" Margin="40,153,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textEinheit" HorizontalAlignment="Left" Margin="90,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
         <Label Content="Einheit" HorizontalAlignment="Left" Margin="102,95,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textMinBestell" HorizontalAlignment="Left" Margin="27,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Mindestbestellwert" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="textBeschreibung" HorizontalAlignment="Left" Margin="27,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Beschreibung" HorizontalAlignment="Left" Margin="47,91,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBox x:Name="textMinBestell" HorizontalAlignment="Left" Margin="29,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Mindestbestellwert" HorizontalAlignment="Left" Margin="34,215,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBeschreibung" HorizontalAlignment="Left" Margin="32,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Beschreibung" HorizontalAlignment="Left" Margin="47,275,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonFileChooser" Content="Bild laden" HorizontalAlignment="Center" Margin="0,342,0,0" VerticalAlignment="Top" Click="buttonFileChooser_Click"/>
+        <Image Name="imageArticle" Height="210" Margin="87,385,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="450"/>
         <Grid Margin="72,167,-72,-173" Width="400" Grid.RowSpan="2">
-            <DataGrid AutoGenerateColumns="False" Width="400" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False" Margin="0,-156,0,212">
+            <DataGrid AutoGenerateColumns="False" Width="400" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False" Margin="0,-156,0,511">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=lag_id}" Header="ID" Width="118" IsReadOnly="true" Visibility="Hidden" />
                     <DataGridTextColumn Binding="{Binding Path=lag_bez}" Header="Bezeichnung" Width="118" IsReadOnly="true"/>
                     <DataGridTextColumn Binding="{Binding Path=lag_nr}" Header="Nummer" Width="70" IsReadOnly="true"/>
                     <DataGridTextColumn Binding="{Binding Path=lag_regal}" Header="Regal" Width="70" IsReadOnly="true"/>
                     <DataGridTextColumn Binding="{Binding Path=lag_fach}" Header="Fach" Width="70" IsReadOnly="true"/>
                     <DataGridTextColumn Binding="{Binding Path=lag_platz}" Header="Platz" Width="70" IsReadOnly="true"/>
                 </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="DataGridRow_MouseLeftButtonUp" />
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </Grid>
+
     </Grid>
 </Window>

@@ -43,57 +43,6 @@ namespace Lagerhaltung
             }
         }
 
-        private void textUserKeyDownEvent(object sender, KeyEventArgs e)
-        {
-            if (textUser.Text.Equals(null))
-            {
-                hintUser.Visibility = Visibility.Visible;
-            }
-
-            if (!textUser.Text.Equals(null))
-            {
-                hintUser.Visibility = Visibility.Hidden;
-            }
-
-        }
-
-        private void textUserKeyUpEvent(object sender, KeyEventArgs e)
-        {
-                if (textUser.Text.Equals(null))
-                {
-                    hintUser.Visibility = Visibility.Visible;
-                }
-            
-        }
-
-        private void textPasswordKeyDownEvent(Object sender, KeyEventArgs e)
-        {
-
-            if (textPassword.Password.ToString().Equals(null))
-            {
-                hintPassword.Visibility = Visibility.Visible;
-            }
-        
-        }
-
-        private void textPasswordKeyUpEvent(object sender, KeyEventArgs e)
-        {
-            if (textPassword.Password.ToString().Equals(""))
-            {
-                hintPassword.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void hintUserOnClickEvent(object sender, RoutedEventArgs e)
-        {
-            hintUser.Visibility = Visibility.Hidden;
-        }
-
-        private void hintPasswordOnClickEvent(object sender, RoutedEventArgs e)
-        {
-            hintPassword.Visibility = Visibility.Hidden;
-        }
-
         private void onClickCheckBox(object sender, RoutedEventArgs e)
         {
             if (checkBoxPassword.IsChecked == true)

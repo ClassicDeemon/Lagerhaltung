@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using MySqlConnector;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +35,7 @@ namespace Lagerhaltung
         public Artikelhinzufuegen()
         {
             InitializeComponent();
+            loadTable();
         }
 
         public Artikelhinzufuegen(int id, int menge, string bezeichnung, string bild, string text, string artikel, string einheit, int lager_id, int min_bestand, int min_bestell)
@@ -60,6 +64,63 @@ namespace Lagerhaltung
         }
 
         private void clickedButtonAdd(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGridRow_MouseLeftButtonUp(object sender, RoutedEventArgs e)
+        {
+            var row = sender as DataGridRow;
+            DataRowView dataView = (DataRowView)row.Item;
+
+            Console.WriteLine(dataView["lag_id"].ToString());
+
+        }
+
+        private void checkSetEingabe()
+        { 
+            if(!(textBezeichnung.Text.Equals("") && textMenge.Text.Equals("") && textEinheit.Text.Equals("") &&
+                textMinbestand.Text.Equals("") && textMinBestell.Text.Equals("")))
+            {
+                if (textBeschreibung.Text.Equals("")) text = "---";
+
+            }
+        }
+
+        private void buttonFileChooser_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "Alle unterstützten Grafikformate|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                imageArticle.Source = new BitmapImage(new Uri(op.FileName));
+            }
+        }
+
+        private void loadTable()
+        {
+            MySqlConnection conn = new MySqlConnection("server=localhost;user=user;database=lagerhaltung;port=3306;password=user");
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT lag_id, lag_bez, lag_nr, lag_regal, lag_fach, lag_platz from lagerstamm", conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet data = new DataSet();
+                adapter.Fill(data, "loadDataBinding");
+                dataGridArticle.DataContext = data;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { conn.Close(); }
+
+        }
+
+        private void DataGridRow_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
         {
 
         }
