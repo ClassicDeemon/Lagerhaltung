@@ -35,10 +35,15 @@ namespace Lagerhaltung
         private int min_bestand;
         private int min_bestell;
 
+        private int permission;
+        private string user;
+
         private MySqlConnection conn = new MySqlConnection("server=192.168.2.117;user=user;" +
                     "database=lagerhaltung;port=3306;password=user");
-        public Artikelhinzufuegen()
+        public Artikelhinzufuegen(string user, int permission)
         {
+            this.permission = permission;
+            this.user = user;
             InitializeComponent();
             loadTable();
         }
@@ -85,10 +90,14 @@ namespace Lagerhaltung
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        Console.WriteLine(reader.GetValue(0).ToString());
+                        Console.WriteLine(reader.GetValue(0).ToString()); 
                         givenId = int.Parse(reader.GetValue(0).ToString());
                     }
                     picInDirectory(givenId);
+
+                    MainWindow main = new MainWindow(user, permission);
+                    main.Show();
+                    this.Close();                    
                 }
                 catch (MySqlException ex)
                 {
@@ -102,8 +111,8 @@ namespace Lagerhaltung
         {
             conn.Close();
             conn.Open();
-            String path = "\\\\mipocloud\\Justin\\Lagerhaltungsdateien\\Artikelbilder\\" + givenId + ".jpg";
-            File.Copy(bild, path);
+            File.Copy(bild, "\\\\mipocloud\\Justin\\Lagerhaltungsdateien\\Artikelbilder\\" + givenId + ".jpg");
+            String path = "##mipocloud#Justin#Lagerhaltungsdateien#Artikelbilder#" + givenId + ".jpg";
             MySqlCommand cmd = new MySqlCommand("UPDATE artikelstamm SET art_bild = '" + path + "' WHERE art_id = " + givenId + ";", conn);
             cmd.ExecuteNonQuery();
         }
@@ -118,7 +127,7 @@ namespace Lagerhaltung
 
         }
 
-        private Boolean checkSetEingabe()
+        private bool checkSetEingabe()
         {
             if (!(textBezeichnung.Text.Equals("") && textMenge.Text.Equals("") && textEinheit.Text.Equals("") &&
                 textMinbestand.Text.Equals("") && textMinBestell.Text.Equals("") && bild.Equals("")))
@@ -176,9 +185,11 @@ namespace Lagerhaltung
 
         }
 
-        private void DataGridRow_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        private void clickedButtonBack(object sender, RoutedEventArgs e) 
         {
-
+            MainWindow main = new MainWindow(user, permission);
+            main.Show();
+            this.Close();
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Lagerverwaltung" Height="{x:Static SystemParameters.PrimaryScreenHeight}" Width="{x:Static SystemParameters.PrimaryScreenWidth}"
         WindowStartupLocation="CenterScreen"
-        WindowState="Maximized">
+        WindowState="Maximized" Icon="/favicon.ico">
     <Grid>
         <Menu Margin="0,2,0,-2">
             <MenuItem x:Name="menuBenutzer" FontSize="20">
@@ -27,53 +27,72 @@
                     <Label Width="200" FontSize="40" Content="Artikel..." HorizontalAlignment="Left" Margin="92,38,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
                     <Button x:Name="buttonArticleDelete" Width="200" FontSize="30" Content="Löschen" HorizontalAlignment="Left" Margin="92,243,0,0" VerticalAlignment="Top" Click="buttonArticleDelete_Click"/>
                     <Grid Margin="352,10,10,10" Width="1000">
-                        <DataGrid AutoGenerateColumns="False" Width="1000" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
+                        <DataGrid AutoGenerateColumns="False" Width="1000" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False" Margin="0,59,0,0">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Path=art_id}" Header="ID" Width="200" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=art_bez}" Header="Bezeichnung" Width="200" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=art_nr}" Header="Menge" Width="200" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=art_einheit}" Header="Einheit" Width="200" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=art_min_bestand}" Header="Mindestbestand" Width="200" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_id}" Header="ID" Width="250" IsReadOnly="true" Visibility="Hidden"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_bez}" Header="Bezeichnung" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_nr}" Header="Menge" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_einheit}" Header="Einheit" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_min_bestand}" Header="Mindestbestand" Width="250" IsReadOnly="true"/>
                                 <DataGridTextColumn Binding="{Binding Path=art_bild}" Header="Bild" Width="100" IsReadOnly="true" Visibility="Hidden"/>
                             </DataGrid.Columns>
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseLeftButtonUp" Handler="DataGridRowArticle_MouseLeftButtonUp" />
+                                </Style>
+                            </DataGrid.Resources>
                         </DataGrid>
 
                     </Grid>
                     <Button x:Name="buttonArticleEdit" Width="200" FontSize="30" Content="Bearbeiten" HorizontalAlignment="Left" Margin="92,325,0,0" VerticalAlignment="Top" Click="buttonArticleEdit_Click"/>
+                    <Image Name="imageArticle" HorizontalAlignment="Left" Height="449" Margin="63,455,0,0" VerticalAlignment="Top" Width="513"/>
+                    <Button Content="Aktualisieren" HorizontalAlignment="Left" Margin="506,71,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                    <TextBox x:Name="textSearchBar" HorizontalAlignment="Left" Margin="628,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1000" KeyUp="searchBarKeyUp"/>
+                    <Label Content="Suchen" HorizontalAlignment="Left" Margin="628,7,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Artikelbewegung" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid Margin="10,100,10,10" Width="1500">
-                        <DataGrid AutoGenerateColumns="False" Width="1500" HorizontalAlignment="Center" x:Name="dataGridMovement" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
+                        <DataGrid AutoGenerateColumns="False" Width="1500" HorizontalAlignment="Center" x:Name="dataGridMovement" ItemsSource="{Binding Path=loadDataMoveBinding}" CanUserResizeColumns="False" Margin="0,57,0,10">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Path=bew_art_id}" Header="Artikel" Width="235" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=bew_datum}" Header="Datum" Width="235" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=bew_typ}" Header="Zugang/Abgang" Width="235" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=bew_menge}" Header="Menge" Width="235" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=bew_bestand}" Header="Bestand" Width="235" IsReadOnly="true"/>
-                                <DataGridTextColumn Binding="{Binding Path=bew_benutzer}" Header="Benutzer" Width="235" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=art_bez}" Header="Artikel" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=bew_datum}" Header="Datum" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=bew_typ}" Header="Zugang/Abgang" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=bew_menge}" Header="Menge" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=bew_bestand}" Header="Bestand" Width="250" IsReadOnly="true"/>
+                                <DataGridTextColumn Binding="{Binding Path=bew_user}" Header="Benutzer" Width="250" IsReadOnly="true"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <Button Content="Einen Artikel bewegen" FontSize="30" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Einen Artikel bewegen" FontSize="30" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Click="buttonMoveArticle"/>
+                    <TextBox x:Name="textSearchBewBar" HorizontalAlignment="Center" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1500"/>
+                    <Label Content="Suchen" HorizontalAlignment="Left" Margin="207,100,0,0" VerticalAlignment="Top" KeyUp="searchBewegungKeyUp"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemLagerstamm" Header="Lagerstamm" Visibility="Hidden" FontSize="20">
+            <TabItem x:Name="tabItemLagerstamm" Header="Lagerstamm" Visibility="Visible" FontSize="20">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid AutoGenerateColumns="False" Width="1434" HorizontalAlignment="Center" x:Name="dataGridMovement_Copy" ItemsSource="{Binding loadDataBinding}" CanUserResizeColumns="False" Margin="0,100,0,10">
+                    <DataGrid AutoGenerateColumns="False" Width="1434" HorizontalAlignment="Center" x:Name="dataGridStorage" ItemsSource="{Binding loadDataStorageBinding}" CanUserResizeColumns="False" Margin="0,165,0,10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding bew_art_id}" Header="Bezeichnung" Width="285" IsReadOnly="true"/>
-                            <DataGridTextColumn Binding="{Binding bew_datum}" Header="Nummer" Width="285" IsReadOnly="true"/>
-                            <DataGridTextColumn Binding="{Binding bew_typ}" Header="Regal" Width="285" IsReadOnly="true"/>
-                            <DataGridTextColumn Binding="{Binding bew_menge}" Header="Fach" Width="285" IsReadOnly="true"/>
-                            <DataGridTextColumn Binding="{Binding bew_bestand}" Header="Platz" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_bez}" Header="Bezeichnung" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_nr}" Header="Nummer" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_regal}" Header="Regal" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_fach}" Header="Fach" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_platz}" Header="Platz" Width="285" IsReadOnly="true"/>
+                            <DataGridTextColumn Binding="{Binding lag_id}" Header="Platz" Width="285" IsReadOnly="true" Visibility="Hidden"/>
                         </DataGrid.Columns>
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseLeftButtonUp" Handler="DataGridRowStorage_MouseLeftButtonUp" />
+                            </Style>
+                        </DataGrid.Resources>
                     </DataGrid>
-                    <Label Content="Lagerplatz" FontSize="30" HorizontalAlignment="Left" Margin="164,27,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Hinzufügen" FontSize="30" HorizontalAlignment="Left" Margin="398,31,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Löschen" FontSize="30" HorizontalAlignment="Left" Margin="753,30,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Bearbeiten" FontSize="30" HorizontalAlignment="Left" Margin="1073,27,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Lagerplatz" FontSize="30" HorizontalAlignment="Left" Margin="392,32,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Hinzufügen" FontSize="30" HorizontalAlignment="Left" Margin="691,36,0,0" VerticalAlignment="Top" Click="buttonStorageAdd"/>
+                    <Button Content="Löschen" FontSize="30" HorizontalAlignment="Left" Margin="1046,35,0,0" VerticalAlignment="Top" Click="buttonStorageDelete"/>
+                    <Button Content="Bearbeiten" FontSize="30" HorizontalAlignment="Left" Margin="1366,32,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textSearchLagBar" HorizontalAlignment="Center" Margin="0,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1434" KeyUp="searchLagerKeyUp"/>
+                    <Label Content="Suchen" HorizontalAlignment="Left" Margin="240,102,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>

@@ -5,21 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lagerhaltung"
         mc:Ignorable="d"
-        Title="Artikelbewegung" Height="450" Width="400">
+        Title="Artikelbewegung" Height="450" Width="550" 
+        WindowStartupLocation="CenterScreen" Icon="/favicon.ico">
     <Grid>
-        <Grid Margin="190,10,10,10" Width="200">
-            <DataGrid AutoGenerateColumns="False" Width="200" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
+        <Grid Margin="190,10,10,10" Width="300">
+            <DataGrid AutoGenerateColumns="False" Width="300" HorizontalAlignment="Center" x:Name="dataGridArticle" ItemsSource="{Binding Path=loadDataBinding}" CanUserResizeColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Bezeichnung" Width="80" IsReadOnly="true"/>
-                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Bestand" Width="60" IsReadOnly="true"/>
-                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="Mindest" Width="60" IsReadOnly="true"/>
-
+                    <DataGridTextColumn Binding="{Binding Path=art_bez}" Header="Bezeichnung" Width="100" IsReadOnly="true"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_nr}" Header="Bestand" Width="100" IsReadOnly="true"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_min_bestand}" Header="Mindestbestand" Width="100" IsReadOnly="true"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_id}" Header="ID" Width="100" IsReadOnly="true" Visibility="Hidden"/>
+                    <DataGridTextColumn Binding="{Binding Path=art_bild}" Header="Bild" Width="100" IsReadOnly="true" Visibility="Hidden"/>
                 </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="DataGridRowArticle_MouseLeftButtonUp" />
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="32,33,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="20,33,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" IsReadOnly="True" Text="--Zugang/Abgang--" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="Zugang"/>
             <ComboBoxItem Content="Abgang"/>
         </ComboBox>
+        <TextBox x:Name="textMenge" HorizontalAlignment="Left" Margin="32,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Menge" HorizontalAlignment="Left" Margin="32,79,0,0" VerticalAlignment="Top"/>
+        <Button Content="Buchen" HorizontalAlignment="Left" Margin="20,184,0,0" VerticalAlignment="Top" Width="70" Click="buttonClickBuchen"/>
+        <Button Content="Abbrechen" HorizontalAlignment="Left" Margin="100,184,0,0" VerticalAlignment="Top" Width="70" Click="buttonClickAbbrechen"/>
+        <Label x:Name="labelDate" Content="17.08.2022" HorizontalAlignment="Left" Margin="5,141,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center"/>
+        <Image Name="imageArticle" HorizontalAlignment="Left" Height="137" Margin="20,232,0,0" VerticalAlignment="Top" Width="171"/>
     </Grid>
 </Window>

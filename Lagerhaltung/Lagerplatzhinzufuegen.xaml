@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lagerhaltung"
         mc:Ignorable="d"
-        Title="Lagerplatzhinzufuegen" Height="450" Width="800">
+        Title="Lagerplatzverwaltung" Height="450" Width="300"
+        WindowStartupLocation="CenterScreen" Icon="/favicon.ico">
     <Grid>
-        
+        <TextBox x:Name="textBezeichnung" HorizontalAlignment="Center" Margin="0,92,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <TextBox x:Name="textNummer" HorizontalAlignment="Center" Margin="0,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <TextBox x:Name="textRegal" HorizontalAlignment="Center" Margin="0,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <TextBox x:Name="textFach" HorizontalAlignment="Center" Margin="0,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <TextBox x:Name="textPlatz" HorizontalAlignment="Center" Margin="0,316,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <Label Content="Lagerplatzverwaltung" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bezeichnung" HorizontalAlignment="Left" Margin="50,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nummer" HorizontalAlignment="Left" Margin="52,125,0,0" VerticalAlignment="Top"/>
+        <Label Content="Regal" HorizontalAlignment="Left" Margin="53,181,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fach" HorizontalAlignment="Left" Margin="53,237,0,0" VerticalAlignment="Top"/>
+        <Label Content="Platz" HorizontalAlignment="Left" Margin="53,293,0,0" VerticalAlignment="Top"/>
+        <Button Content="Akzeptieren" HorizontalAlignment="Left" Margin="40,368,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Click="buttonClickOK"/>
+        <Button Content="Abbrechen" Margin="0,368,40,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" FontSize="16" Click="buttonClickBack"/>
     </Grid>
 </Window>
