@@ -28,6 +28,7 @@ namespace Lagerhaltung
         public static string conString = "server=192.168.2.117;user=user;database=lagerhaltung;port=3306;password=user";
         int permission;
         string user;
+
         public Login()
         {
             InitializeComponent();
